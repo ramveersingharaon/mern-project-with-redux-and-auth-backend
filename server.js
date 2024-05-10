@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser'
 import cors from 'cors'
 dotenv.config()
 import {errorHandler,notFound} from './middleware/errorMiddleware.js';
@@ -8,6 +9,7 @@ import connectDB from './config/db.js';
 const port = process.env.PORT;
 const app = express();
 app.use(express.json());
+app.use(bodyParser())
 app.use(cors())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
